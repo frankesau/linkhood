@@ -1,0 +1,30 @@
+---
+const {title, url, icon} = Astro.props
+---
+<li class="flex
+           justify-center
+           align-middle
+           no-underline
+           transition-all
+           duration-200
+           ease-in-out
+           ">
+    <a href={url}
+       target="_blank"
+       class="no-underline w-full flex justify-center items-center border-2
+           border-white
+           rounded-3xl
+           min-h-12
+           p-4
+           text-white
+           hover:invert(0.5)
+           transition-all
+           hover:scale-105
+           hover:bg-white
+           hover:text-black
+           text-xl
+           ">
+        <img class="size-8 flex-none" src={icon} alt="link icon"/>
+        <p class="flex-auto text-center">{title}</p>
+    </a>
+</li>

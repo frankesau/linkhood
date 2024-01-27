@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LinkList from "../components/LinkList.astro";
+import Background from "../components/Background.astro";
+import Header from "../components/Header.astro";
+import { createClient } from '@supabase/supabase-js'
+
+// Create a single supabase client for interacting with your database
+const PUBLIC_SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL
+const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY
+const USER_HANDLE = import.meta.env.USER_HANDLE
+
+const supabase = createClient(PUBLIC_SUPABASE_URL, SUPABASE_ANON_KEY)
+
+const user = await supabase.from('users').select().eq('handle', USER_HANDLE)
+const userData = user.data[0]
+
+const headerData = {
+	imageSrc: userData.avatar_url,
+	title: userData.name,
+	subtitle: userData.role
+}
+
+const links = await supabase.from('links').select()
+const linkListItems = links.data
+---
+
+<Layout title="Links">
+	<Background />
+	<main class="m-auto p-10 w-full h-full max-w-xl text-white grid gap-8 md:content-center">
+		<Header {...headerData} />
+		<LinkList {linkListItems}></LinkList>
+	</main>
+</Layout>
+

@@ -1,0 +1,18 @@
+---
+interface Props {
+    imageSrc?: string
+}
+
+const {imageSrc} = Astro.props
+---
+
+<img class="justify-self-center
+            border-2
+            border-solid
+            border-white
+            object-cover
+            rounded-full
+            size-[250px]"
+     src={imageSrc}
+     alt="profile picture"
+/>
