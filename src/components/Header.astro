@@ -1,10 +1,11 @@
 ---
 import ProfilePicture from "./ProfilePicture.astro";
+import {type User} from "../types/user";
 
-const {imageSrc, title, subtitle} = Astro.props;
+const userData: User = Astro.props.userData
 ---
 <header class="grid grid-cols-1 justify-items-center">
-    <ProfilePicture {imageSrc} />
-    <h1 class="text-2xl xs:text-3xl 2xs:text-4xl font-semibold justify-self-center mt-2">{title}</h1>
-    <h3 class="text-xl 2xs:text-2xl justify-self-center">{subtitle}</h3>
+    <ProfilePicture {userData} />
+    <h1 class="text-2xl xs:text-3xl 2xs:text-4xl font-semibold justify-self-center mt-2">{userData.name}</h1>
+    <h3 class="text-xl 2xs:text-2xl justify-self-center">{userData.role}</h3>
 </header>

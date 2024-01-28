@@ -1,9 +1,5 @@
 ---
-interface Props {
-    imageSrc?: string
-}
-
-const {imageSrc} = Astro.props
+const {avatarUrl} = Astro.props.userData
 ---
 
 <img class="justify-self-center
@@ -13,6 +9,6 @@ const {imageSrc} = Astro.props
             object-cover
             rounded-full
             size-[250px]"
-     src={imageSrc}
+     src={avatarUrl}
      alt="profile picture"
 />

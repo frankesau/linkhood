@@ -1,5 +1,7 @@
 ---
-const {title, url, icon} = Astro.props
+import type { LinkListItem as LinkListItemType} from "../types/linklistitem.d.ts";
+
+const {title, url, icon}: LinkListItemType  = Astro.props.linkListItem
 ---
 <li class="flex
            justify-center

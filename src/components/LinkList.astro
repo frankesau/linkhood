@@ -1,11 +1,14 @@
 ---
 import LinkListItem from "./LinkListItem.astro";
+import type { LinkListItem as LinkListItemType} from "../types/linklistitem.d.ts";
 
-const {linkListItems} = Astro.props
+const linkListItems: LinkListItemType[] = Astro.props.linkListItems
 ---
 
 <ul role="list" class="list-none mt-0 p-0 flex flex-col gap-3">
     {
-        linkListItems.map((linkListItem) => (<LinkListItem {...linkListItem}/>))
+        linkListItems?.map((linkListItem) => {
+            return <LinkListItem {linkListItem}/>
+        })
     }
 </ul>
