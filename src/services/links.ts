@@ -3,7 +3,10 @@ import {db} from "./db.ts";
 import {type Tables} from "../types/database.ts";
 
 export const getLinks = async (): Promise<LinkListItem[]> => {
-    const {data} = await db.from('links').select()
+    const {data} = await db
+        .from('links')
+        .select()
+        .order('order', {ascending: true});
     const linkListItems: Tables<'links'>[] = data ?? []
 
     return linkListItems.map((linkListItem) => ({
